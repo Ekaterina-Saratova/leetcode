@@ -40,6 +40,22 @@ namespace Tas107
             return Math.Max(leftDepth, rightDepth) + 1;
         }
 
+        public int MinDepth(TreeNode root)
+        {
+            if (root == null)
+                return 0;
+
+            if (root.left == null && root.right == null)
+            {
+                return 1;
+            }
+
+            var left = root.left != null ? MinDepth(root.left) : int.MaxValue;
+            var right = root.right != null ? MinDepth(root.right) : int.MaxValue;
+
+            return Math.Min(left, right) + 1;
+        }
+
         //Обход в глубину.
         public void DepthTraverse(TreeNode node)
         {
