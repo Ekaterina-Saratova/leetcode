@@ -12,8 +12,8 @@ namespace Task349
         {
             var task349 = new Solution();
             var nums = new[] { 1, 2, 3, 0, 0, 0 };
-            CollectionAssert.AreEqual(new[] { 2 }, task349.Intersection(new []{1,2,2,1}, new []{2,2}));
-            CollectionAssert.AreEqual(new[] { 9,4 }, task349.Intersection(new []{4,9,5}, new []{9,4,9,8,4}));
+            CollectionAssert.AreEqual(new[] { 2 }, task349.Intersection(new[] { 1, 2, 2, 1 }, new[] { 2, 2 }));
+            CollectionAssert.AreEqual(new[] { 9, 4 }, task349.Intersection(new[] { 4, 9, 5 }, new[] { 9, 4, 9, 8, 4 }));
             Console.ReadKey();
         }
     }
