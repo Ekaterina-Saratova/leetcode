@@ -9,26 +9,18 @@ namespace LeetCodeDaily
             Array.Sort(greed);
             Array.Sort(size);
             
-            var result = 0;
-
             var childPointer = 0;
             var sizePointer = 0;
 
             while (childPointer < greed.Length && sizePointer < size.Length)
             {
                 if (greed[childPointer] <= size[sizePointer])
-                {
-                    result++;
                     childPointer++;
-                    sizePointer++;
-                }
-                else
-                {
-                    sizePointer++;
-                }
+
+                sizePointer++;
             }
 
-            return result;
+            return childPointer;
         }
     }
 
