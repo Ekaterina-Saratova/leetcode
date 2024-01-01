@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task349", "Task349\Task349.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task673", "Task673\Task673.csproj", "{458C68AE-D48F-4A4F-AE7F-7A87EB89E9ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "100-200", "100-200\100-200.csproj", "{807DAF64-4828-42B2-97AA-FCB8D53231EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solutions", "100-200\Solutions.csproj", "{807DAF64-4828-42B2-97AA-FCB8D53231EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Obsolete", "Obsolete", "{F3CA71E4-968E-4A08-ABA1-313C99836054}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
