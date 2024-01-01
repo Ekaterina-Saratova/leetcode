@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace _100_200
+namespace Grind75
 {
     public class Solution125
     {
