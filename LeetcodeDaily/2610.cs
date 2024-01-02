@@ -34,21 +34,47 @@ namespace LeetCodeDaily
 
             return result;
         }
+
+        public IList<IList<int>> FindMatrixFrequencyCounter(int[] nums)
+        {
+            var frequency = new int[nums.Length + 1];
+            var result = new List<IList<int>>();
+
+            foreach (var n in nums)
+            {
+                if (frequency[n] >= result.Count)
+                {
+                    result.Add(new List<int>());
+                }
+                result[frequency[n]].Add(n);
+                frequency[n]++;
+            }
+
+            return result;
+        }
     }
 
     [TestFixture]
     public class Tests2610
     {
+        private readonly List<IList<int>> expected = new()
+        {
+            new List<int>() { 1, 3, 4, 2 },
+            new List<int>() { 1, 3 },
+            new List<int>(){ 1}
+        };
+
         [TestCase(new int[] { 1, 3, 4, 1, 2, 3, 1 })]
-        public void TestMatrix(int[] nums)
+        public void TestMatrixIteration(int[] nums)
         {
             var result = new Solution2610().FindMatrixIteration(nums);
-            var expected = new List<IList<int>>
-            {
-                new List<int>() { 1, 3, 4, 2 },
-                new List<int>() { 1, 3 },
-                new List<int>(){ 1}
-            };
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestCase(new int[] { 1, 3, 4, 1, 2, 3, 1 })]
+        public void TestMatrixFrequencyCounter(int[] nums)
+        {
+            var result = new Solution2610().FindMatrixFrequencyCounter(nums);
             Assert.AreEqual(result, expected);
         }
     }
