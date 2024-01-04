@@ -25,9 +25,9 @@ namespace LeetCodeDaily
     [TestFixture]
     public class Tests2125
     {
-        [TestCase(new string[]{ "011001", "000000", "010100", "001000" }, 8)]
-        [TestCase(new string[]{ "011001", "000000", "000000", "000000", "010100", "001000" }, 8)]
-        [TestCase(new string[]{ "000", "111", "000" }, 0)]
+        [TestCase(new string[] { "011001", "000000", "010100", "001000" }, 8)]
+        [TestCase(new string[] { "011001", "000000", "000000", "000000", "010100", "001000" }, 8)]
+        [TestCase(new string[] { "000", "111", "000" }, 0)]
         public void TestBeams(string[] bank, int beamCount)
         {
             var result = new Solution2125().NumberOfBeams(bank);
