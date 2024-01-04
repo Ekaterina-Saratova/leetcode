@@ -21,7 +21,8 @@ namespace LeetCodeDaily
                 if (f.Value == 1)
                     return -1;
 
-                result += (f.Value + 2) / 3;
+                //result += (f.Value + 2) / 3;
+                result += (int)Math.Ceiling((double)f.Value / 3);
 
                 //man... I'm bad at math...
                 //switch (f.Value % 3)
