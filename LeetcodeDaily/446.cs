@@ -7,69 +7,53 @@ namespace LeetCodeDaily
         public int NumberOfArithmeticSlices(int[] nums)
         {
             var result = 0;
-            var diffCount = new Dictionary<int, List<Stack<int>>>();
+            var diffCount = new Dictionary<long, List<List<int>>>();
 
             for (int i = 0; i < nums.Length; i++)
             {
                 for (int j = i+1; j < nums.Length; j++)
                 {
-                    //if (i == j)
-                    //    continue;
-                    var diff = nums[j] - nums[i];
+                    var diff = (long)nums[j] - (long)nums[i];
                     if (diffCount.ContainsKey(diff))
                     {
-                        var stacks = new List<Stack<int>>();
+                        var stacks = new List<List<int>>();
                         foreach (var d in diffCount[diff])
                         {
-                            var peek = d.Peek();
+                            var peek = d.Last();
                             if (peek >= j)
                                 continue;
                             if (nums[j] - nums[peek] == diff)
-                                d.Push(j);
-                            else
                             {
-                                var s = new Stack<int>();
-                                s.Push(i);
-                                s.Push(j);
-                                stacks.Add(s);
+                                if (j != nums.Length-1)
+                                {
+                                    var t = d.ToArray();
+                                    stacks.Add(t.ToList());
+                                }
+                                d.Add(j);
+
+                                if (d.Count >= 3)
+                                    result++;
                             }
                         }
+                        var s = new List<int>();
+                        s.Add(i);
+                        s.Add(j);
+                        stacks.Add(s);
+
                         if (stacks.Count > 0)
                             diffCount[diff].AddRange(stacks);
                     }
                     else
                     {
-                        var nd = new List<Stack<int>>();
-                        var s = new Stack<int>();
-                        s.Push(i);
-                        s.Push(j);
+                        var nd = new List<List<int>>();
+                        var s = new List<int>();
+                        s.Add(i);
+                        s.Add(j);
                         nd.Add(s);
                         diffCount.Add(diff, nd);
                     }
                 }
                 
-            }
-
-            foreach (var diff in diffCount)
-            {
-                foreach (var d in diff.Value)
-                {
-                    if (d.Count <= 2)
-                        continue;
-
-                    if (diff.Key == 0)
-                    {
-                        for (var i = 3; i <= d.Count; i++)
-                            result += CountCombinations(d.Count, i);
-                    }
-                    else
-                    {
-                        //var count = d.Count - 3 + 1;
-                        //result += (int)(((double)count / 2) * (1 + count));
-                        for (var i = 3; i <= d.Count; i++)
-                            result += CountN(i, d.Count);
-                    }
-                }
             }
 
             return result;
@@ -78,7 +62,7 @@ namespace LeetCodeDaily
         public static int CountN(int n, int length)
         {
             var result = 0;
-            for (int i = 0; i <= length - n; i++)
+            for (int i = 0; i <= length - n; i++) 
             {
                 result++;
             }
@@ -117,6 +101,7 @@ namespace LeetCodeDaily
         [TestCase(new int[] { 2, 4, 6, 8, 10 }, 7)]
         [TestCase(new int[] { 7, 7, 7, 7, 7 }, 16)]
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 20)]
+        [TestCase(new int[] { 0, 2000000000, -294967296 }, 0)]
         public void TestMatrixIteration(int[] nums, int expected)
         {
             var result = new Solution446().NumberOfArithmeticSlices(nums);
