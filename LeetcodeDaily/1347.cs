@@ -8,22 +8,24 @@ namespace LeetCodeDaily
         {
             var sDict = new Dictionary<char, int>();
 
-            foreach (var ch in s)
+            for (var i = 0; i < s.Length; i++)
             {
-                if (sDict.ContainsKey(ch))
-                    sDict[ch]++;
+                if (sDict.ContainsKey(s[i]))
+                    sDict[s[i]]--;
                 else
-                    sDict.Add(ch, 1);
+                    sDict.Add(s[i], -1);
+                if (sDict.ContainsKey(t[i]))
+                    sDict[t[i]]++;
+                else
+                    sDict.Add(t[i], 1);
             }
 
             var result = 0;
 
-            foreach (var ch in t)
+            foreach (var d in sDict)
             {
-                if (sDict.ContainsKey(ch) && sDict[ch] > 0)
-                    sDict[ch]--;
-                else
-                    result++;
+                if (d.Value > 0)
+                    result += d.Value;
             }
 
             return result;
