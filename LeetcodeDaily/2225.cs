@@ -39,7 +39,7 @@ namespace LeetCodeDaily
             result[0].Sort();
             result[1].Sort();
 
-            return new List<IList<int>>() { result[0], result[1] }; ;
+            return new List<IList<int>>() { result[0], result[1] };
         }
     }
 
