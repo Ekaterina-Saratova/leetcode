@@ -6,31 +6,40 @@ namespace LeetCodeDaily
     {
         public IList<IList<int>> FindWinners(int[][] matches)
         {
-            var winners = new HashSet<int>();
-            var loosers = new Dictionary<int, int>();
+            var counter = new Dictionary<int, int>();
 
             foreach (var m in matches)
             {
-                winners.Add(m[0]);
+                if (!counter.ContainsKey(m[0]))
+                    counter.Add(m[0], 100);
 
-                if (loosers.ContainsKey(m[1]))
-                    loosers[m[1]]++;
-                else
+                if (counter.ContainsKey(m[1]))
                 {
-                    loosers.Add(m[1], 1);
+                    if(counter[m[1]] > 10)
+                        counter[m[1]] = 0;
+                    else
+                    {
+                        counter[m[1]] = -100;
+                    }
                 }
+
+                if (!counter.ContainsKey(m[1]))
+                    counter.Add(m[1], 0);
             }
 
-            var result = new List<IList<int>>() { new List<int>(), new List<int>() };
-            foreach (var w in winners)
+            var result = new List<List<int>>() { new List<int>(), new List<int>() };
+            foreach (var c in counter)
             {
-                if (!loosers.ContainsKey(w))
-                    result[0].Add(w);
-                else if (loosers[w] == 1)
-                    result[1].Add(w);
+                if (c.Value == 100)
+                    result[0].Add(c.Key);
+                if (c.Value == 0)
+                    result[1].Add(c.Key);
             }
 
-            return result;
+            result[0].Sort();
+            result[1].Sort();
+
+            return new List<IList<int>>() { result[0], result[1] }; ;
         }
     }
 
