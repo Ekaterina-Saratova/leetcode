@@ -34,7 +34,7 @@ namespace LeetCodeDaily
         public void TestContentCount(int[] greed, int[] size, int contentCount)
         {
             var result = new Solution455().FindContentChildren(greed, size);
-            Assert.AreEqual(result, contentCount);
+            Assert.AreEqual(contentCount, result);
         }
     }
 }
