@@ -18,9 +18,8 @@ namespace LeetCodeDaily
             var unique = new HashSet<int>();
             foreach (var item in occurrences)
             {
-                if (unique.Contains(item.Value))
+                if (!unique.Add(item.Value))
                     return false;
-                unique.Add(item.Value);
             }
 
             return true;
