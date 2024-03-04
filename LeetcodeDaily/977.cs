@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System.Collections;
 
 namespace LeetCodeDaily
 {
@@ -7,9 +6,32 @@ namespace LeetCodeDaily
     {
         public int[] SortedSquares(int[] nums)
         {
-            var squares = nums.Select(n => n * n).ToArray();
-            Array.Sort(squares);
-            return squares;
+            var numsCount = nums.Length;
+            var result = new int[numsCount];
+
+            var startPointer = 0;
+            var endPointer = numsCount - 1;
+            var resultPointer = numsCount - 1;
+
+            while (startPointer <= endPointer)
+            {
+                var start = nums[startPointer] * nums[startPointer];
+                var end = nums[endPointer] * nums[endPointer];
+                if (start >= end)
+                {
+                    result[resultPointer] = start;
+                    startPointer++;
+                }
+                else
+                {
+                    result[resultPointer] = end;
+                    endPointer--;
+                }
+
+                resultPointer--;
+            }
+
+            return result;
         }
     }
 
