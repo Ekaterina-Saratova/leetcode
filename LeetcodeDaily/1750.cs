@@ -7,29 +7,29 @@ namespace LeetCodeDaily
         public int MinimumLength(string s)
         {
             var numsCount = s.Length;
-            var result = 0;
 
             var startPointer = 0;
             var endPointer = numsCount - 1;
 
-            if (numsCount == 1)
-                return 1;
+            switch (numsCount)
+            {
+                case 1:
+                    return 1;
+                case 2:
+                    return s[0] == s[1] ? 0 : 2;
+                case 3 when s[0] != s[1] && s[1] != s[2] && s[0] != s[2]:
+                    return 3;
+            }
 
-            if (numsCount == 2)
-                return s[0] == s[1] ? 0 : 2;
-
-            if (numsCount == 3 && s[0] != s[1] && s[1] != s[2] && s[0] != s[2])
-                return 3;
-                
-            var currentSymbol = 'd';
+            var flagSymbol = 'd';
 
             while (startPointer < endPointer)
             {
-                if (currentSymbol == 'd')
+                if (flagSymbol == 'd')
                 {
                     if (s[startPointer] == s[endPointer])
                     {
-                        currentSymbol = s[startPointer];
+                        flagSymbol = s[startPointer];
                     }
 
                     startPointer++;
@@ -41,20 +41,17 @@ namespace LeetCodeDaily
                 {
                     startPointer++;
                     endPointer--;
-                    continue;
                 }
-                if (s[startPointer-1] == s[endPointer])
+                else if (s[startPointer-1] == s[endPointer])
                 {
                     endPointer--;
-                    continue;
                 }
-                if (s[startPointer] == s[endPointer+1])
+                else if (s[startPointer] == s[endPointer+1])
                 {
                     startPointer++;
-                    continue;
                 }
-
-                break;
+                else
+                    break;
             }
 
             if (endPointer == startPointer && s[endPointer] == s[startPointer - 1])
