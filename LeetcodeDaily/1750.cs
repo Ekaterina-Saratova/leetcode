@@ -28,9 +28,7 @@ namespace LeetCodeDaily
                 if (flagSymbol == 'd')
                 {
                     if (s[startPointer] == s[endPointer])
-                    {
                         flagSymbol = s[startPointer];
-                    }
 
                     startPointer++;
                     endPointer--;
@@ -43,13 +41,9 @@ namespace LeetCodeDaily
                     endPointer--;
                 }
                 else if (s[startPointer-1] == s[endPointer])
-                {
                     endPointer--;
-                }
                 else if (s[startPointer] == s[endPointer+1])
-                {
                     startPointer++;
-                }
                 else
                     break;
             }
