@@ -4,7 +4,7 @@ namespace LeetCodeDaily
 {
     public class Solution876
     {
-        public ListNode MiddleNode(ListNode head)
+        public ListNode MiddleNodeList(ListNode head)
         {
             var visited = new List<ListNode>();
 
@@ -17,7 +17,20 @@ namespace LeetCodeDaily
             var count = visited.Count;
             return visited[count/2];
         }
-    }
+
+        public ListNode MiddleNodePointers(ListNode head)
+        {
+            var slow = head;
+
+            while (true)
+            {
+                if (head?.next == null)
+                    return slow;
+                head = head.next.next;
+                slow = slow.next;
+            }
+        }
+}
 
     [TestFixture]
     public class Test876
@@ -34,7 +47,7 @@ namespace LeetCodeDaily
             head2.next = head3;
             head3.next = head4;
             //head4.next = head2;
-            var result = new Solution876().MiddleNode(head1);
+            var result = new Solution876().MiddleNodeList(head1);
             Assert.AreEqual(head3.val, result.val);
         }
     }
