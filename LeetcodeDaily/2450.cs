@@ -22,6 +22,19 @@ namespace LeetCodeDaily
             }
             return -1;
         }
+
+
+        public int GetCommonHashSet(int[] nums1, int[] nums2)
+        {
+            var common = nums1.ToHashSet();
+            foreach (var x in nums2)
+            {
+                if (common.Contains(x))
+                    return x;
+            }
+
+            return -1;
+        }
     }
 
     [TestFixture]
