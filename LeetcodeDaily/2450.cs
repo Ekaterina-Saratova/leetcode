@@ -11,27 +11,14 @@ namespace LeetCodeDaily
         {
             var i = 0;
             var j = 0;
-            while (true)
+            while (i < nums1.Length && j < nums2.Length)
             {
-                if (i >= nums1.Length)
-                    return -1;
-                if (j >= nums2.Length)
-                    return -1;
-                while (nums1[i] < nums2[j])
-                {
-                    i++;
-                    if (i >= nums1.Length)
-                        return -1;
-                }
-
-                while (nums2[j] < nums1[i])
-                {
-                    j++;
-                    if (j >= nums2.Length)
-                        return -1;
-                }
                 if (nums1[i] == nums2[j])
                     return nums1[i];
+                if (nums1[i] < nums2[j])
+                    i++;
+                else
+                    j++;
             }
             return -1;
         }
