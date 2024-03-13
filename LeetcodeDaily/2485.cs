@@ -6,14 +6,9 @@ namespace LeetCodeDaily
     {
         public int PivotInteger(int n)
         {
-            for (double i = 1; i <= n; i++)
-            {
-                var left = (i / 2) * (1 + i);
-                var rigth = ((n - i + 1) / 2) * (i + n);
-                if (left == rigth)
-                    return (int)i;
-            }
-            return -1;
+            var sum = (n * (n + 1) / 2);
+            var pivot = (int)Math.Sqrt(sum);
+            return pivot * pivot == sum ? pivot : -1;
         }
     }
 
