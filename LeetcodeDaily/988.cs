@@ -47,6 +47,21 @@ namespace LeetCodeDaily
                 InorderTraversal(node.right);
             }
         }
+
+        public bool HasPathSum(TreeNode root, int targetSum)
+        {
+            if (root == null)
+                return false;
+
+            targetSum -= root.val;
+
+            if (root.left == null && root.right == null)
+            {
+                return targetSum == 0;
+            }
+
+            return HasPathSum(root.left, targetSum) || HasPathSum(root.right, targetSum);
+        }
     }
 
     public class TreeNode
@@ -86,6 +101,30 @@ namespace LeetCodeDaily
             node1.right = node4;
             node2.left = node5;
             var result = new Solution988().SmallestFromLeaf(node);
+
+
+            var n = new TreeNode();
+            n.val = 5;
+            n.left = new TreeNode(4);
+            n.right = new TreeNode(8);
+
+            n.right.left = new TreeNode(13);
+
+            n.right.right = new TreeNode(4);
+            n.right.right.right = new TreeNode(1);
+
+            n.left.left = new TreeNode(11);
+            n.left.left.left = new TreeNode(7);
+            n.left.left.right = new TreeNode(2);
+            var r2 = new Solution988().HasPathSum(n, 22);
+
+            var t = new TreeNode(1);
+            t.left = new TreeNode(-2);
+            t.right = new TreeNode(-3);
+            t.left.right = new TreeNode(3);
+            t.left.left = new TreeNode(1);
+            t.right.right = new TreeNode(-1);
+            //var r3 = new Solution988().HasPathSum(t, 3);
         }
     }
 }
