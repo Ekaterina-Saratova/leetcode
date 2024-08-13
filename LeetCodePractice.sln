@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grind75", "100-200\Grind75.csproj", "{807DAF64-4828-42B2-97AA-FCB8D53231EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grind75", "Grind75\Grind75.csproj", "{807DAF64-4828-42B2-97AA-FCB8D53231EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetCodeDaily", "LeetcodeDaily\LeetCodeDaily.csproj", "{AC34741C-D17C-43CA-8C3B-6A9A17583E07}"
 EndProject
